@@ -1,4 +1,7 @@
 <?php
+session_start();
+include('autenticacao.php');
+
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -24,7 +27,13 @@
 </head>
 <body>
 <div class="container">
-	<h1><img src="img/impressao.png" heigth="50" width="50"> Cadastro de Livros</h1>
+    <div class="row">
+        <div class="col-xs-12">
+            <br><a href="logout.php" class="btn btn-info pull-right">Sair</a>
+            <h1><img src="img/impressao.png" heigth="50" width="50"> Cadastro de Livros</h1>
+                                    
+        </div>                        
+    </div>
 	<div class="panel panel-primary">
 		<div class="panel-heading"><strong>Pesquisar livro</strong></div>
             <form method="post" action="update.php">
@@ -62,7 +71,7 @@
                             </thead>
                             <tbody>
                             <?php
-                                $sql = "SELECT id, titulo, autor, editora, forma_recebimento, data_recebimento FROM livro";
+                                $sql = "select * from livro";
                                 $result = $conn->query($sql);
                                 
                                 if ($result->num_rows > 0) {
@@ -90,8 +99,10 @@
                         </table>
                     </div>
                     <div class="breadcrumb">
+                    <div class="form-group">
+                    
                     <div class="row">
-                        <div class="col-xs-4">
+                        <div class="col-xs-6">
                             <ul class="pagination">
                                 <li><a href="#">&lt; Anterior</a></li>
                                 <li><a href="#">1</a></li>
@@ -99,7 +110,7 @@
                                 <li><a href="#">3</a></li>
                                 <li><a href="#">Próximo &gt;</a></li>
                             </ul>
-                        </div>
+                        </div>                     
                     </div>
                 </div>
 			    </div>
